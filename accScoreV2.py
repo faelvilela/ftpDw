@@ -3,8 +3,6 @@ from datetime import date, timedelta, datetime
 import os, shutil 
 import schedule
 
-today = datetime.now().strftime("%Y%m%d")
-
 def baixar(nome, local):
     path = os.path.join('./', nome)
     try:
@@ -16,8 +14,10 @@ def baixar(nome, local):
         os.remove(path)
 
 print('Comecando...')
-ftp = FTP('host.ftp.com.br')  
+
 def conecta():
+    today = datetime.now().strftime("%Y%m%d")
+    ftp = FTP('host.ftp.com.br')  
     ftp.login(user='User', passwd='Pass') 
     print('CONECTADO')
 
