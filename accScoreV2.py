@@ -3,7 +3,6 @@ from datetime import date, timedelta, datetime
 import os, shutil 
 import schedule
 
-global today
 today = datetime.now().strftime("%Y%m%d")
 
 def baixar(nome, local):
@@ -23,18 +22,14 @@ def conecta():
     print('CONECTADO')
 
 def dw_ativos():
-    local = 'C:/Ativos'
     nome = 'AccountScore_'+today+'.csv'
-    path = os.path.join('./', nome)
     ftp.cwd('/Ativos_SA/Outbound')  
-    baixar(nome, local)
+    baixar(nome, 'C:/Ativos')
         
 def dw_digio():
-    local = 'C:/Banco_Digio'
     nome = 'AccountScore_'+today+'.csv'
-    path = os.path.join('./', nome)
     ftp.cwd('/Digio/Outbound') 
-    baixar(nome, local)
+    baixar(nome, 'C:/Banco_Digio')
 
 def job():
     conecta()
