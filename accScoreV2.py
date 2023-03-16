@@ -21,20 +21,20 @@ def conecta():
     ftp.login(user='User', passwd='Pass') 
     print('CONECTADO')
 
-def dw_ativos():
+def dw_arquivo1():
     nome = 'AccountScore_'+today+'.csv'
-    ftp.cwd('/Ativos_SA/Outbound')  
-    baixar(nome, 'C:/Ativos')
+    ftp.cwd('/Arquivo1/Outbound')  
+    baixar(nome, 'C:/Arquivo1')
         
-def dw_digio():
+def dw_arquivo2():
     nome = 'AccountScore_'+today+'.csv'
-    ftp.cwd('/Digio/Outbound') 
-    baixar(nome, 'C:/Banco_Digio')
+    ftp.cwd('/Arquivo2/Outbound') 
+    baixar(nome, 'C:/Arquivo2')
 
 def job():
     conecta()
-    dw_ativos()
-    dw_digio()
+    dw_arquivo1()
+    dw_arquivo2()
     ftp.quit()
 
 schedule.every().day.at("08:30").do(job)
